@@ -1,9 +1,5 @@
 sync:
-    rsync get_rocky.sh pve:
+    rsync get_latest_rocky_9.sh pve:
 
 run: sync
-    ssh pve ./get_rocky.sh
-
-clean:
-    ssh pve rm "Rocky-9-GenericCloud-*.qcow2"
-    ssh pve qm delete 114
+    ssh pve ./get_latest_rocky_9.sh
