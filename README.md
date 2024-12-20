@@ -28,6 +28,16 @@ Example:
 STORAGE=your-storage ./get_latest_rocky_9.sh
 ```
 
+To call from cron, add a file to `/etc/cron.d` containing:
+
+```sh
+STORAGE=your-storage
+
+4 3 * * mon /usr/local/bin/get_latest_rocky_9.sh
+```
+
+This will run the script each Monday at 03:40
+
 #### What the Script Does
 
 - Downloads the latest Rocky Linux 9 cloud image.

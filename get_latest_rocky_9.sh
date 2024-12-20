@@ -22,6 +22,10 @@ image_name=$(echo "${image_file}" | grep -oP 'Rocky-9-GenericCloud-Base-9.\d{1,2
 # Define the image file name with qemu-guest-agent installed
 qemuga_image_file="$(basename "${image_file}" .qcow2)-qemuga.qcow2"
 
+pushd /var/tmp
+
+trap "popd" EXIT
+
 # Check if a VM with the same name already exists, if so, exit
 if qm list | grep Rocky-9 | awk '{print $2}' | grep -q -P "^${image_name}\$"; then
 	echo "VM with name ${image_name} already exists."
